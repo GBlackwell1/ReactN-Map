@@ -45,13 +45,12 @@ export default function Home({route, navigation}) {
         
         <MapView style={styles.map}
           initialRegion={{
-            latitude: 34.0007,
-            longitude: -81.0348,
+            latitude: locationData.latitude,
+            longitude: locationData.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
           }}
         >
-            <Text>{JSON.stringify(locationData)}</Text>
             {markers.map((marker, index) => (
                 <Marker 
                     key={index}

@@ -1,8 +1,8 @@
 const zipcodes = new Map([
     ["29206", {latitude: 34.026415, longitude: -80.958995}],
-    [29201, {latitude: 33.982484, longitude: -81.028098}],
-    [29208, {latitude: 33.998133, longitude: -81.028152}],
-    [29205, {latitude: 33.990057, longitude: -80.997249}]]);
+    ["29201", {latitude: 33.982484, longitude: -81.028098}],
+    ["29208", {latitude: 33.998133, longitude: -81.028152}],
+    ["29205", {latitude: 33.990057, longitude: -80.997249}]]);
 export default zipcodes;
 // // ZIP,LAT,LNG
 // 00601,18.180555, -66.749961
