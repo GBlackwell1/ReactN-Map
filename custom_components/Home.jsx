@@ -1,10 +1,12 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, Text, View } from 'react-native';
+import { SafeAreaView, TouchableOpacity, Text} from 'react-native';
 import styles from '../styles/app.styles';
 import  MapView, { Marker } from 'react-native-maps';
 import zipcodes from '../data/zipcodes';
+import { useActionSheet } from '@expo/react-native-action-sheet';
 
 export default function Home({route, navigation}) {
+  const {showActionSheetWithOptions} = useActionSheet();
   const zipcode = route.params.zipcode.toString();
   const locationData = zipcodes.get(zipcode);
   console.log(locationData);
@@ -40,6 +42,30 @@ export default function Home({route, navigation}) {
         description: 'Health Counseling'
     }
     ];
+
+    const onPress = () => {
+      const options = ['Prisma', 'Prisma', 'Prisma', 'Prisma', 'Prisma'];
+      const destructiveButtonIndex = 0;
+      const cancelButtonIndex = 2;
+  
+      showActionSheetWithOptions({
+        options,
+        cancelButtonIndex,
+        destructiveButtonIndex
+      }, (selectedIndex) => {
+        switch (selectedIndex) {
+          case 1:
+            // Save
+            break;
+  
+          case destructiveButtonIndex:
+            // Delete
+            break;
+  
+          case cancelButtonIndex:
+            // Canceled
+        }});
+    }
   return (
     <SafeAreaView style={styles.container}>
         
@@ -61,6 +87,11 @@ export default function Home({route, navigation}) {
                 />
             ))}
         </MapView>
+        <TouchableOpacity 
+        style={styles.button}
+        onPress={onPress}>
+              <Text>Press to see local resources</Text>
+        </TouchableOpacity>
     </SafeAreaView>
   );
 }
